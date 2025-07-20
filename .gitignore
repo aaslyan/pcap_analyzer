@@ -1,0 +1,55 @@
+# Compiled binary
+pcap_analyzer
+
+# Object files
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Core dumps
+core
+core.*
+
+# Backup files
+*~
+*.bak
+*.swp
+*.swo
+
+# IDE specific files
+.vscode/
+.idea/
+*.code-workspace
+
+# macOS
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
