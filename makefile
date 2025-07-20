@@ -2,18 +2,22 @@ CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -O2
 LDFLAGS = -lpcap
 
-TARGET = pcap_analyzer
-SOURCE = pcap_analyzer.cpp
+TARGETS = pcap_analyzer udp_replayer
+ANALYZER_SOURCE = pcap_analyzer.cpp
+REPLAYER_SOURCE = udp_replayer.cpp
 
-all: $(TARGET)
+all: $(TARGETS)
 
-$(TARGET): $(SOURCE)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SOURCE) $(LDFLAGS)
+pcap_analyzer: $(ANALYZER_SOURCE)
+	$(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
+
+udp_replayer: $(REPLAYER_SOURCE)
+	$(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGETS)
 
-install: $(TARGET)
-	cp $(TARGET) /usr/local/bin/
+install: $(TARGETS)
+	cp $(TARGETS) /usr/local/bin/
 
 .PHONY: all clean install

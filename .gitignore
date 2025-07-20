@@ -1,5 +1,6 @@
-# Compiled binary
+# Compiled binaries
 pcap_analyzer
+udp_replayer
 
 # Object files
 *.o
