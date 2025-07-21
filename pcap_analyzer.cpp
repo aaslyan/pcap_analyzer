@@ -14,6 +14,7 @@
 #include <pcap.h>
 #include <set>
 #include <sstream>
+#include <unordered_map>
 #include <vector>
 
 namespace fs = std::filesystem;
@@ -50,12 +51,12 @@ struct ConnectionInfo {
 };
 
 struct NetworkStats {
-    std::map<std::string, size_t> src_ips;
-    std::map<std::string, size_t> dst_ips;
-    std::map<uint16_t, size_t> src_ports;
-    std::map<uint16_t, size_t> dst_ports;
-    std::map<std::string, size_t> protocols;
-    std::map<std::string, ConnectionInfo> connections;
+    std::unordered_map<std::string, size_t> src_ips;
+    std::unordered_map<std::string, size_t> dst_ips;
+    std::unordered_map<uint16_t, size_t> src_ports;
+    std::unordered_map<uint16_t, size_t> dst_ports;
+    std::unordered_map<std::string, size_t> protocols;
+    std::unordered_map<std::string, ConnectionInfo> connections;
     size_t total_ipv4_packets;
     size_t total_ipv6_packets;
     size_t total_tcp_packets;
@@ -148,7 +149,7 @@ std::string escapeJson(const std::string& str)
 
 // Get top N entries from a map
 template <typename K, typename V>
-std::vector<std::pair<K, V>> getTopN(const std::map<K, V>& m, size_t n)
+std::vector<std::pair<K, V>> getTopN(const std::unordered_map<K, V>& m, size_t n)
 {
     std::vector<std::pair<K, V>> vec(m.begin(), m.end());
     std::partial_sort(vec.begin(),
